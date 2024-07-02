@@ -7,6 +7,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use JsonSerializable;
+use Traversable;
 
 /**
  * Class to manage the flags of a translation.
@@ -63,12 +64,12 @@ class Flags implements JsonSerializable, Countable, IteratorAggregate
         return in_array($flag, $this->flags, true);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->flags);
     }

@@ -8,6 +8,7 @@ use Countable;
 use Gettext\Languages\Language;
 use InvalidArgumentException;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Class to manage a collection of translations under the same domain.
@@ -81,7 +82,7 @@ class Translations implements Countable, IteratorAggregate
         ];
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->translations);
     }

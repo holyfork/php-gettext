@@ -8,6 +8,7 @@ use Countable;
 use InvalidArgumentException;
 use IteratorAggregate;
 use JsonSerializable;
+use Traversable;
 
 /**
  * Class to manage the headers of translations.
@@ -63,12 +64,12 @@ class Headers implements JsonSerializable, Countable, IteratorAggregate
         return $this;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->toArray());
     }
